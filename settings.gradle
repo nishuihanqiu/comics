@@ -1,0 +1,8 @@
+rootProject.name = 'comics'
+include 'comics-core'
+include 'comics-registry-zookeeper'
+include 'comics-spring-support'
+include 'comics-registry-consul'
+include 'comics-netty'
+include 'comics-samples'
+

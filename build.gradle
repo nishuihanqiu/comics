@@ -1,0 +1,16 @@
+group 'com.lls'
+version '0.0.1-SNAPSHOT'
+
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    jcenter()
+    mavenCentral()
+}
