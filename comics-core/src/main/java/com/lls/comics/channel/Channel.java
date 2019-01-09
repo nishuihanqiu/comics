@@ -1,5 +1,7 @@
 package com.lls.comics.channel;
 
+import com.lls.comics.exception.ComicsNetworkException;
+
 import java.net.InetSocketAddress;
 
 /************************************
@@ -12,6 +14,10 @@ public interface Channel {
     boolean connect();
 
     boolean isConnected();
+
+    boolean isOpen();
+
+    void write(Object message) throws ComicsNetworkException;
 
     boolean close();
 

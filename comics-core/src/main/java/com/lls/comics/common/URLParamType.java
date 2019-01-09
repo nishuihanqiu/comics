@@ -1,0 +1,62 @@
+package com.lls.comics.common;
+
+/************************************
+ * URLParamType
+ * @author liliangshan
+ * @date 2019/1/9
+ ************************************/
+public enum URLParamType {
+
+  VERSION("version", ComicsConstants.DEFAULT_VERSION),
+  GROUP("group", "default_rpc"),
+  APPLICATION("application", ComicsConstants.FRAMEWORK_NAME),
+  MODULE("module", ComicsConstants.FRAMEWORK_NAME);
+
+
+
+  private String name;
+  private String value;
+  private long longValue;
+  private int intValue;
+  private boolean boolValue;
+
+  URLParamType(String name, String value) {
+    this.name = name;
+    this.value = value;
+  }
+
+  URLParamType(String name, long longValue) {
+    this.name = name;
+    this.longValue = longValue;
+  }
+
+  URLParamType(String name, int intValue) {
+    this.name = name;
+    this.intValue = intValue;
+  }
+
+  URLParamType(String name, boolean boolValue) {
+    this.name = name;
+    this.boolValue = boolValue;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getValue() {
+    return value;
+  }
+
+  public long getLongValue() {
+    return longValue;
+  }
+
+  public int getIntValue() {
+    return intValue;
+  }
+
+  public boolean getBooleanValue() {
+    return boolValue;
+  }
+}

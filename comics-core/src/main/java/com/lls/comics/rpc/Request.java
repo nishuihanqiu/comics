@@ -1,9 +1,9 @@
 package com.lls.comics.rpc;
 
 /************************************
- * Configuration
+ * Request
  * @author liliangshan
- * @date 2018/12/29
+ * @date 2019/1/8
  ************************************/
-public class Configuration {
+public interface Request {
 }
