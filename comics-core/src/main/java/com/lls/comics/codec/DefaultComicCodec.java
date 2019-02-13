@@ -2,6 +2,8 @@ package com.lls.comics.codec;
 
 import com.lls.comics.common.ComicsConstants;
 import com.lls.comics.common.URL;
+import com.lls.comics.common.URLParamType;
+import com.lls.comics.core.extension.ExtensionLoader;
 import com.lls.comics.exception.ComicsException;
 import com.lls.comics.rpc.DefaultRequest;
 import com.lls.comics.rpc.DefaultResponse;
@@ -127,7 +129,7 @@ public class DefaultComicCodec extends AbstractCodec {
     }
 
     @Override
-    protected Object decodeRequest(byte[] body, long requestId, Serializer serializer) throws IOException, ClassNotFoundException {
+    protected Object decodeRequest(byte[] body, long requestId, URL url) throws IOException, ClassNotFoundException {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(body);
         ObjectInput input = createObjectInput(inputStream);
         String interfaceName = input.readUTF();
@@ -139,6 +141,7 @@ public class DefaultComicCodec extends AbstractCodec {
         request.setMethodName(methodName);
         request.setArgumentDesc(argumentDesc);
         request.setRequestId(requestId);
+        Serializer serializer = getSerializer(url);
         request.setArguments(this.decodeRequestArguments(input, argumentDesc, serializer));
         request.setAttachments(this.decodeRequestAttachments(input));
 
@@ -147,7 +150,7 @@ public class DefaultComicCodec extends AbstractCodec {
     }
 
     @Override
-    protected Object decodeResponse(byte[] body, byte dataType, long requestId, Serializer serializer) throws IOException, ClassNotFoundException {
+    protected Object decodeResponse(byte[] body, byte dataType, long requestId, URL url) throws IOException, ClassNotFoundException {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(body);
         ObjectInput input = createObjectInput(inputStream);
         long createdTimeMills = input.readLong();
@@ -162,6 +165,7 @@ public class DefaultComicCodec extends AbstractCodec {
 
         String className = input.readUTF();
         Class<?> clz = ReflectUtils.forName(className);
+        Serializer serializer = getSerializer(url);
         Object result = deserialize((byte[]) input.readObject(), clz, serializer);
         if (dataType == ComicsConstants.FLAG_RESPONSE) {
             response.setValue(result);
@@ -212,7 +216,8 @@ public class DefaultComicCodec extends AbstractCodec {
 
     @Override
     protected Serializer getSerializer(URL url) {
-        return null;
+        String serializerName = url.getArgument(URLParamType.SERIALIZER.getName(), URLParamType.SERIALIZER.getValue());
+        return ExtensionLoader.getExtensionLoader(Serializer.class).getExtension(serializerName);
     }
 
     private Object[] decodeRequestArguments(ObjectInput input, String argumentDesc, Serializer serializer) throws IOException,

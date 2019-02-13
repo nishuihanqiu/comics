@@ -1,5 +1,6 @@
 package com.lls.comics.serializer;
 
+import com.lls.comics.core.extension.SpiMeta;
 import io.protostuff.LinkedBuffer;
 import io.protostuff.ProtostuffIOUtil;
 import io.protostuff.Schema;
@@ -18,6 +19,7 @@ import java.io.IOException;
  * @author liliangshan
  * @date 2018/12/13
  ************************************/
+@SpiMeta(name = "protostuff")
 public class ProtostuffSerializer implements Serializer {
 
     private static Objenesis objenesis = new ObjenesisStd(true);

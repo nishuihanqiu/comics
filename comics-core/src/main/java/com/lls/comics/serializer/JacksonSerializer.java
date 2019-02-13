@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.lls.comics.core.extension.SpiMeta;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * @author liliangshan
  * @date 2018/12/23
  ************************************/
+@SpiMeta(name = "jackson")
 public class JacksonSerializer implements Serializer {
 
     private static ObjectMapper objectMapper = new ObjectMapper();

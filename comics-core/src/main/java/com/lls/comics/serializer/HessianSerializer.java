@@ -2,6 +2,7 @@ package com.lls.comics.serializer;
 
 import com.caucho.hessian.io.HessianInput;
 import com.caucho.hessian.io.HessianOutput;
+import com.lls.comics.core.extension.SpiMeta;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -12,6 +13,7 @@ import java.io.IOException;
  * @author liliangshan
  * @date 2018/12/23
  ************************************/
+@SpiMeta(name = "hessian")
 public class HessianSerializer implements Serializer {
 
 

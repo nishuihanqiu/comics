@@ -11,7 +11,12 @@ public enum URLParamType {
     REQUEST_ID_FROM_CLIENT("requestIdFromClient", 0), //request id from http interface
     GROUP("group", "default_rpc"),
     APPLICATION("application", ComicsConstants.FRAMEWORK_NAME),
-    MODULE("module", ComicsConstants.FRAMEWORK_NAME);
+    MODULE("module", ComicsConstants.FRAMEWORK_NAME),
+
+
+    /* ************************* SPI start ***************************** */
+    /** serializer **/
+    SERIALIZER("serializer", "hessian2");
 
 
     private String name;

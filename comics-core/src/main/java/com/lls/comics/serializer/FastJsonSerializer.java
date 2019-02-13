@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.serializer.JSONSerializer;
 import com.alibaba.fastjson.serializer.SerializeWriter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.lls.comics.core.extension.SpiMeta;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * @author liliangshan
  * @date 2018/12/13
  ************************************/
+@SpiMeta(name = "fastJson")
 public class FastJsonSerializer implements Serializer {
 
     @Override

@@ -42,12 +42,11 @@ public abstract class AbstractCodec implements Codec {
         boolean isResponse = dataType != ComicsConstants.FLAG_REQUEST;
         byte[] body = getBody(bytes);
         long requestId = getRequestId(bytes);
-        Serializer serializer = getSerializer(url);
         try {
             if (isResponse) {
-                return decodeResponse(body, dataType, requestId, serializer);
+                return decodeResponse(body, dataType, requestId, url);
             }
-            return decodeRequest(body, requestId, serializer);
+            return decodeRequest(body, requestId, url);
         } catch (ClassNotFoundException e) {
             throw new ComicsException(this.getClass().getSimpleName() + "decode " + (isResponse ? "response" : "request") +
                 " error: class not found.", e);
@@ -98,9 +97,9 @@ public abstract class AbstractCodec implements Codec {
 
     protected abstract byte[] encodeResponse(URL url, Response response) throws IOException;
 
-    protected abstract Object decodeRequest(byte[] body, long requestId, Serializer serializer) throws IOException, ClassNotFoundException;
+    protected abstract Object decodeRequest(byte[] body, long requestId, URL url) throws IOException, ClassNotFoundException;
 
-    protected abstract Object decodeResponse(byte[] body, byte dataType, long requestId, Serializer serializer) throws IOException,
+    protected abstract Object decodeResponse(byte[] body, byte dataType, long requestId, URL url) throws IOException,
         ClassNotFoundException;
 
     protected abstract void beforeDecodeValidation(byte[] body);
