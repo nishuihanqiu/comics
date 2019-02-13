@@ -22,4 +22,6 @@ public class ComicsConstants {
     public static final byte FLAG_RESPONSE_ATTACHMENT = 0x07;
     public static final byte FLAG_OTHER = (byte) 0xFF;
 
+    public static final String DEFAULT_CHARACTER = "utf-8";
+
 }
