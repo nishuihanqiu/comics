@@ -1,5 +1,7 @@
-package com.lls.comics.channel;
+package com.lls.comics.netty;
 
+import com.lls.comics.channel.ChannelHandler;
+import com.lls.comics.channel.ChannelState;
 import com.lls.comics.exception.ComicsNetworkException;
 import com.lls.comics.logging.Logger;
 import com.lls.comics.logging.LoggerFactory;
@@ -29,11 +31,11 @@ public class DefaultNettyChannel implements NettyChannel {
     private InetSocketAddress localAddress;
     private InetSocketAddress remoteAddress;
 
-    public DefaultNettyChannel(URL url, Bootstrap bootstrap, int timeout) {
+    public DefaultNettyChannel(URL url, Bootstrap bootstrap) {
         this.url = url;
         this.bootstrap = bootstrap;
         this.remoteAddress = new InetSocketAddress(url.getHost(), url.getPort());
-        this.timeout = timeout;
+        this.timeout = url.getIntArgument("timeout", 5000);
     }
 
     @Override

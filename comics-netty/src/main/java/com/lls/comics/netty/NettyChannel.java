@@ -1,5 +1,7 @@
-package com.lls.comics.channel;
+package com.lls.comics.netty;
 
+import com.lls.comics.channel.Channel;
+import com.lls.comics.channel.ChannelHandler;
 import com.lls.comics.exception.ComicsNetworkException;
 
 /************************************

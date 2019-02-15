@@ -25,4 +25,6 @@ public interface Client {
 
     InetSocketAddress getRemoteAddress();
 
+    Response send(Request request);
+
 }

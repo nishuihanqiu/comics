@@ -12,11 +12,17 @@ public enum URLParamType {
     GROUP("group", "default_rpc"),
     APPLICATION("application", ComicsConstants.FRAMEWORK_NAME),
     MODULE("module", ComicsConstants.FRAMEWORK_NAME),
-
+    /** pool min conn number **/
+    MIN_CLIENT_CONNECTION("minClientConnection", 2),
+    /** pool max conn number **/
+    MAX_CLIENT_CONNECTION("maxClientConnection", 10),
+    ASYNC_INITCONNECTION("asyncInitConnection", false),
 
     /* ************************* SPI start ***************************** */
     /** serializer **/
-    SERIALIZER("serializer", "hessian2");
+    SERIALIZER("serializer", "hessian2"),
+    /** codec **/
+    CODEC("codec", "comics"),;
 
 
     private String name;

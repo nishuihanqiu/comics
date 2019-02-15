@@ -4,6 +4,7 @@ import com.lls.comics.common.ComicsConstants;
 import com.lls.comics.common.URL;
 import com.lls.comics.common.URLParamType;
 import com.lls.comics.core.extension.ExtensionLoader;
+import com.lls.comics.core.extension.SpiMeta;
 import com.lls.comics.exception.ComicsException;
 import com.lls.comics.rpc.DefaultRequest;
 import com.lls.comics.rpc.DefaultResponse;
@@ -22,6 +23,7 @@ import java.util.Map;
  * @author liliangshan
  * @date 2019-01-31
  ************************************/
+@SpiMeta(name = "comics")
 public class DefaultComicCodec extends AbstractCodec {
 
     private static final int HEADER_LENGTH = 16;

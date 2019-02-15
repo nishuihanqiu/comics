@@ -1,5 +1,6 @@
-package com.lls.comics.channel;
+package com.lls.comics.netty;
 
+import com.lls.comics.channel.ChannelFactory;
 import com.lls.comics.core.ComicsThreadPoolExecutor;
 import com.lls.comics.core.DefaultThreadFactory;
 
@@ -18,9 +19,15 @@ public class NettyChannelFactory implements ChannelFactory<NettyChannel> {
         new DefaultThreadFactory("netty-rebuild-executor-service", true),
         new ThreadPoolExecutor.CallerRunsPolicy());
 
+    private NettyClient nettyClient;
+
+    public NettyChannelFactory(NettyClient nettyClient) {
+        this.nettyClient = nettyClient;
+    }
+
     @Override
     public NettyChannel createChannel() {
-        return null;
+        return new DefaultNettyChannel(nettyClient.getURL(), nettyClient.getBootstrap());
     }
 
     @Override

@@ -20,5 +20,6 @@ repositories {
 
 
 dependencies {
+    compile project(":comics-core")
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }

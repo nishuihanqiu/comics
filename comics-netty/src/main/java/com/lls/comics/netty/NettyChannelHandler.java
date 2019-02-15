@@ -1,5 +1,8 @@
-package com.lls.comics.channel;
+package com.lls.comics.netty;
 
+import com.lls.comics.channel.ChannelHandler;
+import com.lls.comics.channel.ChannelHandlerFuture;
+import com.lls.comics.channel.ChannelHandlerListener;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
 
