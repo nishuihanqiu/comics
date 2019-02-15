@@ -31,7 +31,7 @@ public class NettyClient extends AbstractSharedPoolClient {
     }
 
     @Override
-    public boolean open() {
+    public boolean connect() {
         return false;
     }
 
@@ -46,7 +46,7 @@ public class NettyClient extends AbstractSharedPoolClient {
     }
 
     @Override
-    public boolean isAvailable() {
+    public boolean isConnected() {
         return false;
     }
 

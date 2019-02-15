@@ -5,11 +5,11 @@ import com.lls.comics.common.URL;
 import java.net.InetSocketAddress;
 
 /************************************
- * Client
+ * Server
  * @author liliangshan
- * @date 2019/1/9
+ * @date 2019-02-15
  ************************************/
-public interface Client {
+public interface Server {
 
     URL getURL();
 
@@ -21,10 +21,10 @@ public interface Client {
 
     boolean isConnected();
 
+    boolean isActive();
+
     InetSocketAddress getLocalAddress();
 
     InetSocketAddress getRemoteAddress();
-
-    Response send(Request request);
 
 }
