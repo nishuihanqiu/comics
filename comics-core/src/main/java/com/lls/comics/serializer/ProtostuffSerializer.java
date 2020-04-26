@@ -41,13 +41,13 @@ public class ProtostuffSerializer implements Serializer {
     }
 
     @Override
-    public byte[] batchSerialize(Object[] data) throws IOException {
+    public byte[] multiSerialize(Object[] data) throws IOException {
         SerializeDeserializeWrapper wrapper = SerializeDeserializeWrapper.build(data);
         return this.serialize(wrapper);
     }
 
     @Override
-    public Object[] batchDeserialize(byte[] data, Class<?>[] classes) throws IOException {
+    public Object[] multiDeserialize(byte[] data, Class<?>[] classes) throws IOException {
         SerializeDeserializeWrapper wrapper = this.deserialize(data, SerializeDeserializeWrapper.class);
         return wrapper.getData();
     }

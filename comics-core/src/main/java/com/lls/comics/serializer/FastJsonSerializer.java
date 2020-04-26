@@ -34,12 +34,12 @@ public class FastJsonSerializer implements Serializer {
     }
 
     @Override
-    public byte[] batchSerialize(Object[] data) throws IOException {
+    public byte[] multiSerialize(Object[] data) throws IOException {
         return serialize(data);
     }
 
     @Override
-    public Object[] batchDeserialize(byte[] data, Class<?>[] classes) throws IOException {
+    public Object[] multiDeserialize(byte[] data, Class<?>[] classes) throws IOException {
         List<Object> objects = JSON.parseArray(new String(data), classes);
         if (objects == null) {
             return null;

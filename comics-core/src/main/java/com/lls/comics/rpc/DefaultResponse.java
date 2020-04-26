@@ -14,95 +14,116 @@ import java.util.Map;
  ************************************/
 public class DefaultResponse implements Serializable, Response {
 
-  private static final long serialVersionUID = -3339885938593888548L;
+    private static final long serialVersionUID = -3339885938593888548L;
 
-  private Object value;
-  private Exception exception;
-  private long requestId;
-  private long createdTimeMills;
-  private int timeout;
+    private Object value;
+    private Exception exception;
+    private long requestId;
+    private long createdTimeMills;
+    private int timeout;
+    private byte version = VersionEnum.VERSION_1.getVersion();
+    private Map<String, String> attachments;
+    private int serializeNumber = 0;
 
-  private Map<String, String> attachments;
-
-  public DefaultResponse() {
-  }
-
-  public DefaultResponse(long requestId) {
-    this.requestId = requestId;
-  }
-
-  public DefaultResponse(Response response) {
-    this.value = response.getValue();
-    this.exception = response.getException();
-    this.requestId = response.getRequestId();
-    this.createdTimeMills = response.getCreatedTimeMills();
-    this.timeout = response.getTimeout();
-  }
-
-  public DefaultResponse(Object value) {
-    this.value = value;
-  }
-
-  @Override
-  public Object getValue() {
-    if (exception != null) {
-      throw (exception instanceof RuntimeException) ? (RuntimeException) exception :
-        new ComicsResponseException(exception.getMessage(), exception);
+    public DefaultResponse() {
     }
-    return value;
-  }
 
-  public void setValue(Object value) {
-    this.value = value;
-  }
-
-  @Override
-  public Exception getException() {
-    return null;
-  }
-
-  public void setException(Exception exception) {
-    this.exception = exception;
-  }
-
-  @Override
-  public long getRequestId() {
-    return requestId;
-  }
-
-  public void setRequestId(long requestId) {
-    this.requestId = requestId;
-  }
-
-  @Override
-  public long getCreatedTimeMills() {
-    return createdTimeMills;
-  }
-
-  @Override
-  public void setCreatedTimeMills(long createdTimeMills) {
-    this.createdTimeMills = createdTimeMills;
-  }
-
-  @Override
-  public int getTimeout() {
-    return timeout;
-  }
-
-  @Override
-  public Map<String, String> getAttachments() {
-    return attachments != null ? attachments : Collections.emptyMap();
-  }
-
-  public void setAttachments(Map<String, String> attachments) {
-    this.attachments = attachments;
-  }
-
-  @Override
-  public void setAttachment(String key, String value) {
-    if (attachments == null) {
-      attachments = new HashMap<>();
+    public DefaultResponse(long requestId) {
+        this.requestId = requestId;
     }
-    attachments.put(key, value);
-  }
+
+    public DefaultResponse(Response response) {
+        this.value = response.getValue();
+        this.exception = response.getException();
+        this.requestId = response.getRequestId();
+        this.createdTimeMills = response.getCreatedTimeMills();
+        this.timeout = response.getTimeout();
+    }
+
+    public DefaultResponse(Object value) {
+        this.value = value;
+    }
+
+    @Override
+    public Object getValue() {
+        if (exception != null) {
+            throw (exception instanceof RuntimeException) ? (RuntimeException) exception :
+                    new ComicsResponseException(exception.getMessage(), exception);
+        }
+        return value;
+    }
+
+    public void setValue(Object value) {
+        this.value = value;
+    }
+
+    @Override
+    public Exception getException() {
+        return null;
+    }
+
+    public void setException(Exception exception) {
+        this.exception = exception;
+    }
+
+    @Override
+    public long getRequestId() {
+        return requestId;
+    }
+
+    public void setRequestId(long requestId) {
+        this.requestId = requestId;
+    }
+
+    @Override
+    public long getCreatedTimeMills() {
+        return createdTimeMills;
+    }
+
+    @Override
+    public void setCreatedTimeMills(long createdTimeMills) {
+        this.createdTimeMills = createdTimeMills;
+    }
+
+    @Override
+    public int getTimeout() {
+        return timeout;
+    }
+
+    @Override
+    public Map<String, String> getAttachments() {
+        return attachments != null ? attachments : Collections.emptyMap();
+    }
+
+    public void setAttachments(Map<String, String> attachments) {
+        this.attachments = attachments;
+    }
+
+    @Override
+    public void setAttachment(String key, String value) {
+        if (attachments == null) {
+            attachments = new HashMap<>();
+        }
+        attachments.put(key, value);
+    }
+
+    @Override
+    public byte getVersion() {
+        return version;
+    }
+
+    @Override
+    public void setVersion(byte version) {
+        this.version = version;
+    }
+
+    @Override
+    public void setSerializeNumber(int number) {
+        serializeNumber = number;
+    }
+
+    @Override
+    public int getSerializeNumber() {
+        return serializeNumber;
+    }
 }

@@ -27,4 +27,12 @@ public interface Request {
 
     void setRetries(int retries);
 
+    byte getVersion();
+
+    void setVersion(byte version);
+
+    void setSerializeNumber(int number);
+
+    int getSerializeNumber();
+
 }

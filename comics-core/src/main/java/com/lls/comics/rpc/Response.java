@@ -25,4 +25,12 @@ public interface Response {
 
     void setAttachment(String key, String value);
 
+    byte getVersion();
+
+    void setVersion(byte version);
+
+    void setSerializeNumber(int number);
+
+    int getSerializeNumber();
+
 }

@@ -3,6 +3,7 @@ package com.lls.comics.util;
 import com.lls.comics.common.ComicsConstants;
 import com.lls.comics.common.URL;
 import com.lls.comics.common.URLParamType;
+import com.lls.comics.rpc.DefaultResponse;
 import com.lls.comics.rpc.Request;
 
 /************************************
@@ -64,6 +65,18 @@ public class ComicsUtils {
             return path.substring(0, path.length() - ComicsConstants.ASYNC_SUFFIX.length());
         }
         return path;
+    }
+
+    public static DefaultResponse buildErrorResponse(Request request, Exception e) {
+        return buildErrorResponse(request.getRequestId(), request.getVersion(), e);
+    }
+
+    public static DefaultResponse buildErrorResponse(long requestId, byte version, Exception e) {
+        DefaultResponse response = new DefaultResponse();
+        response.setRequestId(requestId);
+        response.setVersion(version);
+        response.setException(e);
+        return response;
     }
 
 }

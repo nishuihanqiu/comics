@@ -17,9 +17,9 @@ public interface Serializer {
 
     <T> T deserialize(byte[] bytes, Class<T> clz) throws IOException;
 
-    byte[] batchSerialize(Object[] data) throws IOException;
+    byte[] multiSerialize(Object[] data) throws IOException;
 
-    Object[] batchDeserialize(byte[] data, Class<?>[] classes) throws IOException;
+    Object[] multiDeserialize(byte[] data, Class<?>[] classes) throws IOException;
 
     int getSerializerVersion();
 

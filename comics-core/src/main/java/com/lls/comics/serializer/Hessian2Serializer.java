@@ -34,7 +34,7 @@ public class Hessian2Serializer implements Serializer {
     }
 
     @Override
-    public byte[] batchSerialize(Object[] data) throws IOException {
+    public byte[] multiSerialize(Object[] data) throws IOException {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         Hessian2Output hessian2Output = new Hessian2Output(outputStream);
         for (Object item : data) {
@@ -45,7 +45,7 @@ public class Hessian2Serializer implements Serializer {
     }
 
     @Override
-    public Object[] batchDeserialize(byte[] data, Class<?>[] classes) throws IOException {
+    public Object[] multiDeserialize(byte[] data, Class<?>[] classes) throws IOException {
         ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
         Hessian2Input hessian2Input = new Hessian2Input(inputStream);
         Object[] objects = new Object[classes.length];
