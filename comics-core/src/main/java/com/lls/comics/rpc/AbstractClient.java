@@ -5,6 +5,7 @@ import com.lls.comics.codec.Codec;
 import com.lls.comics.common.URL;
 import com.lls.comics.common.URLParamType;
 import com.lls.comics.core.extension.ExtensionLoader;
+import com.lls.comics.exception.ComicsException;
 import com.lls.comics.logging.Logger;
 import com.lls.comics.logging.LoggerFactory;
 
@@ -42,6 +43,11 @@ public abstract class AbstractClient implements Client {
     @Override
     public InetSocketAddress getRemoteAddress() {
         return remoteAddress;
+    }
+
+    @Override
+    public void heartbeat(Object message) {
+        throw new ComicsException("heart beat not support:" + message.toString());
     }
 
     public void setLocalAddress(InetSocketAddress localAddress) {

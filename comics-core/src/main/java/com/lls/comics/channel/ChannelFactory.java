@@ -5,10 +5,10 @@ package com.lls.comics.channel;
  * @author liliangshan
  * @date 2019/1/9
  ************************************/
-public interface ChannelFactory<T extends Channel> {
+public interface ChannelFactory<T extends SocketChannel> {
 
   T createChannel();
 
-  boolean rebuildChannel(T channel);
+  boolean rebuildChannel(T channel, boolean async);
 
 }

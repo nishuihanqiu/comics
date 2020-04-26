@@ -1,6 +1,7 @@
 package com.lls.comics.netty;
 
 import com.lls.comics.channel.ChannelFactory;
+import com.lls.comics.channel.SocketChannel;
 import com.lls.comics.common.URL;
 import com.lls.comics.rpc.AbstractSharedPoolClient;
 import com.lls.comics.rpc.Request;
@@ -21,7 +22,7 @@ public class NettyClient extends AbstractSharedPoolClient {
     }
 
     @Override
-    protected ChannelFactory createChannelFactory() {
+    protected ChannelFactory<SocketChannel> createChannelFactory() {
         return null;
     }
 

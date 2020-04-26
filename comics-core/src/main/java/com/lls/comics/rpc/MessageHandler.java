@@ -1,6 +1,6 @@
 package com.lls.comics.rpc;
 
-import com.lls.comics.channel.Channel;
+import com.lls.comics.channel.SocketChannel;
 
 /************************************
  * MessageHandler
@@ -9,6 +9,6 @@ import com.lls.comics.channel.Channel;
  ************************************/
 public interface MessageHandler {
 
-    Object handle(Channel channel, Object message);
+    Object handle(SocketChannel channel, Object message);
 
 }

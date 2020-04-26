@@ -39,7 +39,6 @@ public class NettyChannelHandler implements ChannelHandler {
         });
       }
     });
-
     return this;
   }
 

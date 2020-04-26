@@ -1,30 +1,21 @@
 package com.lls.comics.rpc;
 
-import com.lls.comics.common.URL;
+import com.lls.comics.channel.SocketChannel;
 
 import java.net.InetSocketAddress;
+import java.util.Collection;
 
 /************************************
  * Server
  * @author liliangshan
  * @date 2019-02-15
  ************************************/
-public interface Server {
+public interface Server extends SocketChannel {
 
-    URL getURL();
+    boolean isBound();
 
-    boolean connect();
+    Collection<SocketChannel> getChannels();
 
-    void close();
-
-    boolean isClosed();
-
-    boolean isConnected();
-
-    boolean isActive();
-
-    InetSocketAddress getLocalAddress();
-
-    InetSocketAddress getRemoteAddress();
+    SocketChannel getChannel(InetSocketAddress remoteAddress);
 
 }

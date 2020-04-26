@@ -31,7 +31,7 @@ public class NettyChannelFactory implements ChannelFactory<NettyChannel> {
     }
 
     @Override
-    public boolean rebuildChannel(NettyChannel channel) {
+    public boolean rebuildChannel(NettyChannel channel, boolean async) {
         return false;
     }
 

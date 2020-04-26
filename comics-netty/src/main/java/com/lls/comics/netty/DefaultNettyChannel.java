@@ -89,7 +89,7 @@ public class DefaultNettyChannel implements NettyChannel {
     }
 
     @Override
-    public boolean isOpen() {
+    public boolean open() {
         return state.isConnectedState() && channel != null && channel.isOpen();
     }
 
