@@ -9,43 +9,80 @@ public class ComicsException extends RuntimeException {
 
     private static final long serialVersionUID = 12399938089400L;
 
-    private String errorCode;
-    private String message;
-    private static final String DEFAULT_ERROR_CODE = "COMICS_EXCEPTION";
+    protected String errorMessage = "";
+    protected ComicsExceptionMessage exceptionMessage = ComicsExceptionConstants.FRAMEWORK_DEFAULT_ERROR;
 
     public ComicsException() {
-        this("base comics exception.");
+        super();
+    }
+
+    public ComicsException(ComicsExceptionMessage exceptionMessage) {
+        this.exceptionMessage = exceptionMessage;
     }
 
     public ComicsException(String message) {
-        this(message, DEFAULT_ERROR_CODE);
-    }
-
-    public ComicsException(String message, String errorCode) {
         super(message);
-        this.errorCode = errorCode;
+        this.errorMessage = message;
     }
 
+    public ComicsException(String message, ComicsExceptionMessage exceptionMessage) {
+        super(message);
+        this.errorMessage = message;
+        this.exceptionMessage = exceptionMessage;
+    }
 
     public ComicsException(String message, Throwable cause) {
-        this(message, cause, DEFAULT_ERROR_CODE);
+        super(message, cause);
+        this.errorMessage = message;
     }
 
-    public ComicsException(String message, Throwable cause, String errorCode) {
+    public ComicsException(String message, Throwable cause, ComicsExceptionMessage exceptionMessage) {
         super(message, cause);
-        this.errorCode = errorCode;
+        this.errorMessage = message;
+        this.exceptionMessage = exceptionMessage;
     }
 
     public ComicsException(Throwable cause) {
-        this(cause, DEFAULT_ERROR_CODE);
+        super(cause);
     }
 
-    public ComicsException(Throwable cause, String errorCode) {
+    public ComicsException(Throwable cause, ComicsExceptionMessage exceptionMessage) {
         super(cause);
-        this.errorCode = errorCode;
+        this.exceptionMessage = exceptionMessage;
+    }
+
+    @Override
+    public String getMessage() {
+        String message = getOriginMessage();
+        return "error_message: " + message + ", status: " + exceptionMessage.getStatus() + ", error_code: " + exceptionMessage.getErrorCode()
+                + ",r=";
+    }
+
+    public String getOriginMessage(){
+        if (exceptionMessage == null) {
+            return super.getMessage();
+        }
+
+        String message;
+
+        if (errorMessage != null && !"".equals(errorMessage)) {
+            message = errorMessage;
+        } else {
+            message = exceptionMessage.getMessage();
+        }
+        return message;
+    }
+
+    public int getStatus() {
+        return exceptionMessage == null ? 0 : exceptionMessage.getStatus();
     }
 
     public String getErrorCode() {
-        return errorCode;
+        return exceptionMessage == null ? "" : exceptionMessage.getErrorCode();
     }
+
+    public ComicsExceptionMessage getExceptionMessage() {
+        return exceptionMessage;
+    }
+
 }

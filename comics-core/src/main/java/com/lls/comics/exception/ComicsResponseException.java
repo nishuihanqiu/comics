@@ -9,28 +9,35 @@ public class ComicsResponseException extends ComicsException {
 
     private static final long serialVersionUID = 90448836938089400L;
 
-    public ComicsResponseException(String message) {
-        super(message);
+    public ComicsResponseException() {
+        super(ComicsExceptionConstants.SERVICE_RESPONSE_ERROR);
     }
 
-    public ComicsResponseException(String message, String errorCode) {
-        super(message, errorCode);
+    public ComicsResponseException(ComicsExceptionMessage exceptionMessage) {
+        super(exceptionMessage);
+    }
+
+    public ComicsResponseException(String message) {
+        super(message, ComicsExceptionConstants.SERVICE_RESPONSE_ERROR);
+    }
+
+    public ComicsResponseException(String message, ComicsExceptionMessage exceptionMessage) {
+        super(message, exceptionMessage);
     }
 
     public ComicsResponseException(String message, Throwable cause) {
-        super(message, cause);
+        super(message, cause, ComicsExceptionConstants.SERVICE_RESPONSE_ERROR);
     }
 
-    public ComicsResponseException(String message, Throwable cause, String errorCode) {
-        super(message, cause, errorCode);
+    public ComicsResponseException(String message, Throwable cause, ComicsExceptionMessage exceptionMessage) {
+        super(message, cause, exceptionMessage);
     }
 
     public ComicsResponseException(Throwable cause) {
-        super(cause);
+        super(cause, ComicsExceptionConstants.SERVICE_RESPONSE_ERROR);
     }
 
-    public ComicsResponseException(Throwable cause, String errorCode) {
-        super(cause, errorCode);
+    public ComicsResponseException(Throwable cause, ComicsExceptionMessage exceptionMessage) {
+        super(cause, exceptionMessage);
     }
-
 }

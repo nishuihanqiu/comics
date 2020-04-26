@@ -9,28 +9,36 @@ public class ComicsNetworkException extends ComicsException {
 
     private static final long serialVersionUID = 234509240288899L;
 
-    public ComicsNetworkException(String message) {
-        super(message);
+    public ComicsNetworkException() {
+        super(ComicsExceptionConstants.SERVICE_NETWORK_ERROR);
     }
 
-    public ComicsNetworkException(String message, String errorCode) {
-        super(message, errorCode);
+    public ComicsNetworkException(ComicsExceptionMessage exceptionMessage) {
+        super(exceptionMessage);
+    }
+
+    public ComicsNetworkException(String message) {
+        super(message, ComicsExceptionConstants.SERVICE_NETWORK_ERROR);
+    }
+
+    public ComicsNetworkException(String message, ComicsExceptionMessage exceptionMessage) {
+        super(message, exceptionMessage);
     }
 
     public ComicsNetworkException(String message, Throwable cause) {
-        super(message, cause);
+        super(message, cause, ComicsExceptionConstants.SERVICE_NETWORK_ERROR);
     }
 
-    public ComicsNetworkException(String message, Throwable cause, String errorCode) {
-        super(message, cause, errorCode);
+    public ComicsNetworkException(String message, Throwable cause, ComicsExceptionMessage exceptionMessage) {
+        super(message, cause, exceptionMessage);
     }
 
     public ComicsNetworkException(Throwable cause) {
-        super(cause);
+        super(cause, ComicsExceptionConstants.SERVICE_NETWORK_ERROR);
     }
 
-    public ComicsNetworkException(Throwable cause, String errorCode) {
-        super(cause, errorCode);
+    public ComicsNetworkException(Throwable cause, ComicsExceptionMessage exceptionMessage) {
+        super(cause, exceptionMessage);
     }
 
 }

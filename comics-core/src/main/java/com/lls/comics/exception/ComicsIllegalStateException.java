@@ -9,28 +9,36 @@ public class ComicsIllegalStateException extends ComicsException {
 
     private static final long serialVersionUID = 90000123808400L;
 
-    public ComicsIllegalStateException(String message) {
-        super(message);
+    public ComicsIllegalStateException() {
+        super(ComicsExceptionConstants.SERVICE_ILLEGAL_STATE);
     }
 
-    public ComicsIllegalStateException(String message, String errorCode) {
-        super(message, errorCode);
+    public ComicsIllegalStateException(ComicsExceptionMessage exceptionMessage) {
+        super(exceptionMessage);
+    }
+
+    public ComicsIllegalStateException(String message) {
+        super(message, ComicsExceptionConstants.SERVICE_ILLEGAL_STATE);
+    }
+
+    public ComicsIllegalStateException(String message, ComicsExceptionMessage exceptionMessage) {
+        super(message, exceptionMessage);
     }
 
     public ComicsIllegalStateException(String message, Throwable cause) {
-        super(message, cause);
+        super(message, cause, ComicsExceptionConstants.SERVICE_ILLEGAL_STATE);
     }
 
-    public ComicsIllegalStateException(String message, Throwable cause, String errorCode) {
-        super(message, cause, errorCode);
+    public ComicsIllegalStateException(String message, Throwable cause, ComicsExceptionMessage exceptionMessage) {
+        super(message, cause, exceptionMessage);
     }
 
     public ComicsIllegalStateException(Throwable cause) {
-        super(cause);
+        super(cause, ComicsExceptionConstants.SERVICE_ILLEGAL_STATE);
     }
 
-    public ComicsIllegalStateException(Throwable cause, String errorCode) {
-        super(cause, errorCode);
+    public ComicsIllegalStateException(Throwable cause, ComicsExceptionMessage exceptionMessage) {
+        super(cause, exceptionMessage);
     }
 
 }
